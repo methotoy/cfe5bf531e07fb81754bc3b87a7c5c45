@@ -5,17 +5,28 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 zero_mp">
                         <div class="address">
-                            <i class="fa fa-envelope floatleft"></i>
-                            <p>hello@brielia.com</p>
+                            @guest
+
+                            @else
+                                <i class="fa fa-envelope floatleft"></i>
+                                <p>{{ Auth::user()->email }}</p>
+                            @endguest
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="social_icon text-right">
-                            <a href=""><i class="fa fa-facebook"></i></a>
-                            <a href=""><i class="fa fa-twitter"></i></a>
-                            <a href=""><i class="fa fa-google-plus"></i></a>
-                            <a href=""><i class="fa fa-youtube"></i></a>
-                            <a href="" class="log">Sign in</a>
+                            @guest
+                                <a href=""><i class="fa fa-facebook"></i></a>
+                                <a href=""><i class="fa fa-twitter"></i></a>
+                                <a href=""><i class="fa fa-google-plus"></i></a>
+                                <a href=""><i class="fa fa-youtube"></i></a>
+                                <a href="{{ url('/login') }}" class="log">Sign in</a>
+                            @else
+                                <form method="POST" action="{{ url('/logout') }}">
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="Sign Out" class=" btn btn-link log">
+                                </form>
+                            @endguest
                         </div>
                     </div>
                     <!--End of col-md-4-->
@@ -58,18 +69,4 @@
         <!--End of header menu-->
     </div>
     <!--end of header area-->
-
-    <div class="banner-area aligncenter">
-        <h1>Where Your Journey Begins.</h1>
-        <p><strong>Find Your Best Travel</strong></p>
-        <form>
-          <div class="row">
-          <div class="col-md-4 col-sm-4"><input type="text" value="" name="find" placeholder="City,Hotel and Resort's Name"/></div>
-          <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="Check In" name="in"/></div>
-          <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="Num. of Nights" name="night"/></div>
-          <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="1 room, 2 Guest" name="guest"/></div>
-          <div class="col-md-2 col-sm-2 last"><input type="submit" value="Find" name="submit"/></div>
-          </div>
-        </form>
-    </div>
 </section>

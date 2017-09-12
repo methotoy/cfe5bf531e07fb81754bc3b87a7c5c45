@@ -3,6 +3,22 @@
 @section('title','Home')
 
 @section('content')
+	<section id="header">
+		<div class="banner-area aligncenter">
+	    <h1>Where Your Journey Begins.</h1>
+	    <p><strong>Find Your Best Travel</strong></p>
+	    <form>
+	      <div class="row">
+	      <div class="col-md-4 col-sm-4"><input type="text" value="" name="find" placeholder="City,Hotel and Resort's Name"/></div>
+	      <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="Check In" name="in"/></div>
+	      <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="Num. of Nights" name="night"/></div>
+	      <div class="col-md-2 col-sm-2 b-lft"><input type="text" placeholder="1 room, 2 Guest" name="guest"/></div>
+	      <div class="col-md-2 col-sm-2 last"><input type="submit" value="Find" name="submit"/></div>
+	      </div>
+	    </form>
+	  </div>
+	</section>
+	
 	<section id="featured">
       <div class="container">
           <h2>Featured Destinations</h2>
