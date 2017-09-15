@@ -29,6 +29,18 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(UserRole::class,'id');
+        return $this->hasOne(UserRole::class,'id','user_role');
+    }
+
+    public function isAdmin() {
+        return ($this->role->type === 'Admin')? true : false;
+    }
+
+    public function isOwner() {
+        return ($this->role->type === 'Owner')? true : false;
+    }
+
+    public function isNormal() {
+        return ($this->role->type === 'Normal')? true : false;
     }
 }

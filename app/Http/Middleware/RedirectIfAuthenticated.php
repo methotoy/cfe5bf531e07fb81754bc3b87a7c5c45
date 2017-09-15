@@ -17,8 +17,17 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $to = '/';
         if (Auth::guard($guard)->check()) {
-            return redirect('/');
+            if ($guard == 'admin') {
+                $to = '/admin/home';
+            }
+
+            if ($guard == 'owner') {
+                $to = '/owner/home';
+            }
+
+            return redirect($to);
         }
 
         return $next($request);
